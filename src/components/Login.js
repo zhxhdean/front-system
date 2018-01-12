@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Redirect} from 'react-router-dom';
 import {
   Form,
   Icon,
@@ -11,12 +12,15 @@ import {
 import '../css/login.css';
 
 import api from '../service/login';
-
+import storage from '../common/localstorage';
 import {SUCCESS} from '../common/errcode';
 
 const FormItem = Form.Item;
 class NormalLoginForm extends Component {
 
+  state = {
+    redirectToReferrer: false
+  };
   handleLogin = (e) => {
     e.preventDefault();
     this
@@ -27,13 +31,19 @@ class NormalLoginForm extends Component {
           console.log('Received values of form:', values);
           let username = values.userName;
           let password = values.passWord;
+          if (values.remember) {
+            storage.set('username', username);
+          } else {
+            storage.remove('username');
+          }
           api
             .login(username, password)
             .then(rsp => {
               if (rsp.code === SUCCESS) {
-                message.success(rsp.msg)
+                message.success(rsp.msg);
+                this.setState({redirectToReferrer: true});
               } else {
-                message.error(rsp.msg)
+                message.error(rsp.msg);
               }
             })
             .catch(err => {
@@ -44,6 +54,7 @@ class NormalLoginForm extends Component {
   }
 
   render() {
+    let username = storage.get('username') || '';
     const {getFieldDecorator} = this.props.form;
     const formItemLayout = {
       labelCol: {
@@ -63,6 +74,18 @@ class NormalLoginForm extends Component {
         }
       }
     };
+    const {redirectToReferrer} = this.state;
+    const {from} = this.props.location.state || {
+      from: {
+        pathname: '/'
+      }
+    };
+
+    if (redirectToReferrer){
+      return (
+        <Redirect to={from} />
+      )
+    }
     return (
       <div>
         <Form className="login-form" onSubmit={this.handleLogin}>
@@ -73,7 +96,8 @@ class NormalLoginForm extends Component {
                   required: true,
                   message: '请输入你的账号!'
                 }
-              ]
+              ],
+              initialValue: username
             })(
               <Input
                 prefix={< Icon type = "user" style = {{color:'rgba(0,0,0,.25)'}}/>}
