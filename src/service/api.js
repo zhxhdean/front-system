@@ -9,7 +9,6 @@ axios.defaults.timeout = 300000;
 
 function setToken (params) {
   let _params =  {token: login.get_token(), ...params};
-  console.log(_params)
   return _params;
 }
 

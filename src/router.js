@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Index from './components/Index';
 import Profile from './components/Profile';
 import App from './App';
+import Project from './components/Project';
 const Routers = () => {
   // 路由集合
   const routes = [
@@ -20,6 +21,9 @@ const Routers = () => {
     }, {
       path: '/app',
       main: App
+    }, {
+      path: '/project',
+      main: Project
     }
   ]
 

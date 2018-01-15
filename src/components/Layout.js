@@ -8,13 +8,14 @@ const { Header, Content, Footer } = Layout;
 
 
 const DefaultLayout = ({children}) => {
+  let selectedKey = ['1']
   return (
       <Layout className="layout">
         <Header>
           <div className="logo">此处放Logo</div>
-          <Menu theme="dark" mode="horizontal" style={{ lineHeight: '64px' }} defaultSelectedKeys ={['1']} >
+          <Menu theme="dark" mode="horizontal" style={{ lineHeight: '64px' }} defaultSelectedKeys ={selectedKey} >
             <Menu.Item key="1"><Link to="/">首页</Link></Menu.Item>
-            <Menu.Item key="2">项目</Menu.Item>
+            <Menu.Item key="2"><Link to="/project">项目</Link></Menu.Item>
             <Menu.Item key="3"><Link to="/profile">账户设置</Link></Menu.Item>
           </Menu>
         </Header>
@@ -22,7 +23,7 @@ const DefaultLayout = ({children}) => {
         {children}
         </Content>
         <Footer style={{ textAlign: 'center' }}>
-          Front @2018 Created by BenLai.com
+          Front ©2018 Created by BenLai.com
         </Footer>
       </Layout>
     )
