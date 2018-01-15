@@ -5,12 +5,16 @@ export const SUCCESS = 0;
 export const EMPTY_PARAMETERS = 1;
 // 密码错误
 export const INCORRECT_PASSWORD = 2;
-//token错误
+// token错误
 export const TOKEN_ERROR = 10;
-//token超时
+// token超时
 export const TOKEN_TIMEOUT_ERROR = 11;
-//token即将过期(属于成功验证token)
+// token即将过期(属于成功验证token)
 export const TOKEN_IMMINENT_TIMEOUT = 12;
+
+// 不存在用
+export const NO_USER = 20;
+
 // 51-99 接口错误 >=100 ,框架级错误 超时
 export const TIMEOUT_MESSAGE = 'ECONNABORTED';
 export const TIMEOUT = 100;

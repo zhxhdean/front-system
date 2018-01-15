@@ -1,14 +1,16 @@
+import api from './api';
+
+import {GET_USER} from '../common/interface';
 
 function get_user() {
-  return Promise.resolve({
-    userName: '张三',
-    email: 'zhxhdean@hotmail.com',
-    phone: '13900001111',
-    company: '本来生活',
-    job: 'FE'
-  })
+  return api.get(GET_USER, {});
+}
+
+function set_user(user) {
+  return api.post(GET_USER, {user: user})
 }
 
 export default {
-  get_user
+  get_user,
+  set_user
 }

@@ -131,7 +131,7 @@ class NormalLoginForm extends Component {
             }
           }}>
             {getFieldDecorator('remember', {
-              initialValue: true,
+              initialValue: false,
               valuePropName: 'checked'
             })(
               <Checkbox>记住账号</Checkbox>

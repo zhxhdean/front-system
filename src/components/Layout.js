@@ -19,7 +19,6 @@ const DefaultLayout = ({children}) => {
           </Menu>
         </Header>
         <Content style={{ background: '#fff', padding: 15, minHeight: 280 }}>
-          我是主体内容
         {children}
         </Content>
         <Footer style={{ textAlign: 'center' }}>
