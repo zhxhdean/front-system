@@ -1,6 +1,6 @@
 // axios 调用服务接口
 import axios from 'axios';
-import {TIMEOUT, TIMEOUT_MESSAGE, NETWORK_ERROR, NETWORK_ERROR_MESSAGE} from '../common/errcode';
+import {TIMEOUT, TIMEOUT_MESSAGE, NETWORK_ERROR, NETWORK_ERROR_MESSAGE, METHOD_NOT_ALLOWED} from '../common/errcode';
 import login from './login';
 
 axios.defaults.baseURL = 'http://localhost:3000/';
@@ -28,6 +28,9 @@ function post(url, params, token = true) {
       if (err.code === TIMEOUT_MESSAGE) {
         return {code: TIMEOUT, msg: '网络超时,请重试!'}
       }
+      if (err.response.status === METHOD_NOT_ALLOWED) {
+        return {code: METHOD_NOT_ALLOWED, msg: '未允许的方法!'}
+      }
       console.log(err);
     });
   return promise
@@ -48,12 +51,20 @@ function get(url, params, token = true) {
       if (err.code === TIMEOUT_MESSAGE) {
         return {code: TIMEOUT, msg: '网络超时,请重试!'}
       }
+      if (err.response.status === METHOD_NOT_ALLOWED) {
+        return {code: METHOD_NOT_ALLOWED, msg: '未允许的方法!'}
+      }
       console.log(err);
     });
   return promise
 }
 
+function deletes(url, params, token = true) {
+  // const promise = axios.delete(url,)
+}
+
 export default {
   post,
-  get
+  get,
+  deletes
 }

@@ -13,6 +13,7 @@ function login(username, password) {
     .then(rsp => {
       if (rsp.code === SUCCESS) {
         storage.set('token', rsp.token);
+        storage.set('uid', rsp.uid)
         rsp.msg = '登录成功!';
       } else if (rsp.code === INCORRECT_PASSWORD) {
         rsp.msg = '密码错误!';

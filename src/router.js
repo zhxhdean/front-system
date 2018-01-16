@@ -8,6 +8,7 @@ import Index from './components/Index';
 import Profile from './components/Profile';
 import App from './App';
 import Project from './components/Project';
+import ProjectAdd from './components/ProjectAdd';
 const Routers = () => {
   // 路由集合
   const routes = [
@@ -17,13 +18,24 @@ const Routers = () => {
       exact: true
     }, {
       path: '/profile',
-      main: Profile
+      main: Profile,
+      exact: true
     }, {
       path: '/app',
       main: App
     }, {
+      path: '/project/add',
+      main: ProjectAdd,
+      exact: true
+    }, {
+      path: '/project/detail/:id',
+      main: ProjectAdd,
+      exact: true,
+      strict: true
+    }, {
       path: '/project',
-      main: Project
+      main: Project,
+      exact: true
     }
   ]
 
@@ -33,7 +45,7 @@ const Routers = () => {
         <Route path="/login" component={Login} />
         <DefaultLayout>
         { routes.map((route, index) => (
-          <Route key={index} path={route.path} exact={route.exact} component={PrivateRoute(route.main)} />
+          <Route key={index} path={route.path} exact={route.exact} strict={route.strict} component={PrivateRoute(route.main)} />
                 ))
         }
         </DefaultLayout>

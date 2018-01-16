@@ -88,6 +88,7 @@ class NormalLoginForm extends Component {
     }
     return (
       <div>
+
         <Form className="login-form" onSubmit={this.handleLogin}>
           <FormItem label="账号" {...formItemLayout}>
             {getFieldDecorator('userName', {
