@@ -23,7 +23,7 @@ const DefaultLayout = ({children}) => {
         {children}
         </Content>
         <Footer style={{ textAlign: 'center' }}>
-          Front ©2018 Created by BenLai.com
+          Front ©2018 Created by XXX.com
         </Footer>
       </Layout>
     )
