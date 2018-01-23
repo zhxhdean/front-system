@@ -12,7 +12,6 @@ const PrivateRoute = (Component) => {
       }
     }
     componentDidMount() {
-      console.log('Didmount')
       this.checkAuth();
     }
     checkAuth(){

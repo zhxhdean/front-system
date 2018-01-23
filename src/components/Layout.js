@@ -8,12 +8,19 @@ const { Header, Content, Footer } = Layout;
 
 
 const DefaultLayout = ({children}) => {
-  let selectedKey = ['1']
+  let selectedKeys = ['1'];
+  const url = window.location.href;
+  if(url.includes('project')) {
+    selectedKeys = ['2']
+  } else if (url.includes('profile')) {
+    selectedKeys = ['3']
+  }
+
   return (
       <Layout className="layout">
         <Header>
           <div className="logo">此处放Logo</div>
-          <Menu theme="dark" mode="horizontal" style={{ lineHeight: '64px' }} defaultSelectedKeys ={selectedKey} >
+          <Menu theme="dark" mode="horizontal" style={{ lineHeight: '64px' }} defaultSelectedKeys = {['1']} selectedKeys={selectedKeys}>
             <Menu.Item key="1"><Link to="/">首页</Link></Menu.Item>
             <Menu.Item key="2"><Link to="/project">项目</Link></Menu.Item>
             <Menu.Item key="3"><Link to="/profile">账户设置</Link></Menu.Item>

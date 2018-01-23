@@ -135,6 +135,13 @@ class ProjectAddForm extends Component {
             })(<Input placeholder="请输入项目名称" />)
           }
           </Form.Item>
+          <Form.Item label="token" {...formItemLayout}>
+          {
+            getFieldDecorator('token',{
+              initialValue: this.state.projectInfo.token
+            })(<Input disabled placeholder="创建后自动生成" />)
+          }
+          </Form.Item>
           <Form.Item label="描述" {...formItemLayout}>
           {
             getFieldDecorator('description', {

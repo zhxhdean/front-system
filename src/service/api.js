@@ -5,7 +5,7 @@ import login from './login';
 
 axios.defaults.baseURL = 'http://localhost:3000/';
 axios.defaults.headers.post['Content-Type'] = 'application/json; charset=utf-8';
-axios.defaults.timeout = 300000;
+axios.defaults.timeout = 5000;
 
 function setToken (params) {
   let _params =  {token: login.get_token(), ...params};

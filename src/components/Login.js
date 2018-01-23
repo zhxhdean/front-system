@@ -29,6 +29,7 @@ class NormalLoginForm extends Component {
       .validateFields((err, values) => {
         if (!err) {
           console.log('Received values of form:', values);
+
           let username = values.userName;
           let password = values.passWord;
           if (values.remember) {
